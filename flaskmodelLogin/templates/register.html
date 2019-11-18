@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import form_field %}
+{% block metas %}
+    {{ super() }}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+ <div class="container">
+        <br>
+        <a href="{{ url_for('index') }}">&larr; Return</a>
+        <h1 class="display-4">Register Form</h1>
+        <hr>
+<form method="post">
+    {{ register_form.csrf_token }}
+     <div class="form-group">
+    {{ form_field(register_form.username,class='form-control') }}
+     </div>
+     <div class="form-group">
+    {{ form_field(register_form.email,class='form-control') }}
+     </div>
+     <div class="form-group">
+    {{ form_field(register_form.password,class='form-control') }}
+     </div>
+     <div class="form-group">
+    {{ register_form.submit(class='btn btn-primary') }}
+<a href="{{ url_for('basic') }}">&larr; sign in</a>
+     </div>
+</form>
+{% endblock %}
